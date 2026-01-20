@@ -1,10 +1,11 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Our Services | Prabhu Tour & Travels</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,64 +17,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body{
   font-family:'Poppins',sans-serif;
   background:#0b0b0b;
   color:#fff;
-  overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 .navbar{
   background:rgba(0,0,0,.75);
   backdrop-filter:blur(12px);
 }
-.navbar-brand{font-weight:700;font-size:26px}
-.nav-link{color:#fff!important;margin-left:22px;transition:.4s}
-.nav-link:hover{color:#FFD700!important;transform:translateY(-6px)}
+.navbar-brand{
+  font-weight:700;
+  font-size:26px;
+}
+.nav-link{
+  color:#fff!important;
+  margin-left:22px;
+  transition:.3s;
+}
+.nav-link:hover{
+  color:#FFD700!important;
+  transform:translateY(-4px);
+}
 
-/* HERO (BACKGROUND IMAGE LIKE CONTACT PAGE) */
+/* MOBILE NAV */
+@media (max-width:768px){
+  .navbar-brand{
+    font-size:20px;
+  }
+  .navbar-collapse{
+    background:rgba(0,0,0,.95);
+    padding:20px 0;
+    border-radius:0 0 16px 16px;
+  }
+  .nav-link{
+    margin-left:0;
+    padding:10px 0;
+    text-align:center;
+  }
+}
+
+/* ================= HERO ================= */
 .services-hero{
-  height:65vh;
+  min-height:70vh;
+  padding-top:120px;
   background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),
-    url('https://cdn.pixabay.com/photo/2016/11/29/09/08/taxi-1862321_1280.jpg');
-  background-size:cover;
-  background-position:center;
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.95)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+    center/cover no-repeat;
   display:flex;
   align-items:center;
 }
-.services-hero h1{font-size:54px;font-weight:700}
+.services-hero h1{
+  font-size:54px;
+  font-weight:700;
+}
 .services-hero span{
   color:#FFD700;
   text-shadow:0 0 25px #FFD700;
 }
 
-/* FEATURE CARDS */
-.feature-card{
+/* ================= CARDS ================= */
+.feature-card,
+.extra-card{
   background:rgba(255,255,255,.06);
   border-radius:18px;
   padding:25px;
   text-align:center;
   transition:.4s;
 }
-.feature-card i{
+.feature-card i,
+.extra-card i{
   font-size:34px;
   color:#FFD700;
   margin-bottom:12px;
 }
-.feature-card:hover{
+.feature-card:hover,
+.extra-card:hover{
   transform:translateY(-8px);
   box-shadow:0 0 30px rgba(255,215,0,.45);
 }
 
-/* SERVICE INFO */
-.service-info h2 span{
-  color:#FFD700;
-  text-shadow:0 0 20px #FFD700;
-}
-
-/* ROUTES */
+/* ================= ROUTES ================= */
 .routes{
   margin-top:20px;
   font-size:16px;
@@ -83,7 +115,7 @@ body{
   margin:0 10px;
 }
 
-/* IMAGE CARD (STABLE IMAGE) */
+/* ================= IMAGE ================= */
 .service-image{
   border-radius:22px;
   overflow:hidden;
@@ -91,7 +123,6 @@ body{
 }
 .service-image img{
   width:100%;
-  height:80%;
   object-fit:cover;
 }
 .service-image:hover{
@@ -99,37 +130,61 @@ body{
   box-shadow:0 0 35px rgba(255,215,0,.5);
 }
 
-/* EXTRA CARDS */
-.extra-card{
-  background:rgba(255,255,255,.06);
-  border-radius:18px;
-  padding:25px;
-  text-align:center;
-  transition:.4s;
-}
-.extra-card i{
-  font-size:34px;
-  color:#FFD700;
-  margin-bottom:12px;
-}
-.extra-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 30px rgba(255,215,0,.45);
+/* ================= WHATSAPP ================= */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:56px;
+  height:56px;
+  background:#25d366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 0 25px #25d366;
+  z-index:1000;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer{
   background:#000;
   padding:50px 0 25px;
 }
-.footer-brand{color:#FFD700;font-size:26px;font-weight:700}
-.footer-social a{
+.footer-brand{
   color:#FFD700;
-  font-size:22px;
-  margin-right:15px;
+  font-size:26px;
+  font-weight:700;
 }
-.footer-social a:hover{color:#fff}
-.footer-right i{color:#FFD700;margin-right:8px}
+.footer-social{
+  margin-top:12px;
+  display:flex;
+  gap:12px;
+}
+.footer-social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,215,0,.12);
+  color:#FFD700;
+  font-size:20px;
+  transition:.3s;
+}
+.footer-social a:hover{
+  background:#FFD700;
+  color:#000;
+  transform:translateY(-3px);
+  box-shadow:0 6px 20px rgba(255,215,0,.5);
+}
+.footer-right i{
+  color:#FFD700;
+  margin-right:8px;
+}
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.15);
   margin-top:25px;
@@ -137,114 +192,179 @@ body{
   text-align:center;
   font-size:14px;
 }
+
+/* FOOTER MOBILE ALIGN */
+@media(max-width:768px){
+  .footer{
+    text-align:left;
+  }
+  .footer-right{
+    text-align:left!important;
+    margin-top:15px;
+  }
+}
 </style>
 </head>
 
 <body>
-{% load static %}
 
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">
+
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" width="34" height="34" class="me-2" alt="Logo">
       Prabhu Tour & Travels
     </a>
 
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-      </li>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">About</a>
-      </li>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto text-center">
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'services' %}">Services</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-      </li>
-    </ul>
   </div>
 </nav>
 
-
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="services-hero">
-<div class="container">
-  <h1>Our <span>Services</span></h1>
-  <p class="mt-3">Reliable • Comfortable • Affordable Taxi Services</p>
-</div>
+  <div class="container">
+    <h1>Our <span>Services</span></h1>
+    <p class="mt-3">Reliable • Comfortable • Affordable Taxi Services</p>
+  </div>
 </section>
 
-<!-- FEATURES -->
+<!-- ================= FEATURES ================= -->
 <section class="container my-5">
-<div class="row g-4">
-  <div class="col-md-4"><div class="feature-card"><i class="fa-solid fa-clock"></i><h5>24×7 Available</h5><p>Anytime taxi service.</p></div></div>
-  <div class="col-md-4"><div class="feature-card"><i class="fa-solid fa-wallet"></i><h5>Budget Friendly</h5><p>No hidden charges.</p></div></div>
-  <div class="col-md-4"><div class="feature-card"><i class="fa-solid fa-house"></i><h5>Door to Door</h5><p>Pickup & drop service.</p></div></div>
-</div>
-</section>
-
-<!-- MAIN SERVICE INFO -->
-<section class="container my-5">
-<div class="row align-items-center g-5">
-
-<div class="col-md-6 service-info">
-  <h2>Serving From <span>Ludhiana</span></h2>
-  <p class="mt-3">
-    We provide reliable taxi services from Ludhiana to major cities across Punjab
-    with professional drivers and clean vehicles.
-  </p>
-
-  <div class="routes">
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Chandigarh<br>
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Mohali<br>
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Amritsar<br>
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Barnala<br>
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Pathankot<br>
-    Ludhiana <i class="fa-solid fa-arrow-right"></i> Khanna<br>
-    <strong>And Many More Cities…</strong>
-  </div>
-
-  <div class="row g-4 mt-4">
-    <div class="col-md-6"><div class="extra-card"><i class="fa-solid fa-arrow-right"></i><h5>One Way Service</h5><p>Pay only one-side fare.</p></div></div>
-    <div class="col-md-6"><div class="extra-card"><i class="fa-solid fa-arrows-rotate"></i><h5>Up & Down Service</h5><p>Same day return trips.</p></div></div>
-  </div>
-</div>
-
-<div class="col-md-6">
-  <div class="service-image">
-    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Taxi Service Punjab">
-  </div>
-</div>
-
-</div>
-</section>
-<footer class="footer">
-<div class="container">
-<div class="row align-items-center">
-  <div class="col-md-6">
-    <div class="footer-brand">Prabhu Tour & Travels</div>
-    <p>Premium cab & travel services from Ludhiana.</p>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/prabhu_tour_and_travels/" target="_blank"><i class="fab fa-instagram"></i></a>
-      
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prabhujangra@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-clock"></i>
+        <h5>24×7 Available</h5>
+        <p>Anytime taxi service.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-wallet"></i>
+        <h5>Budget Friendly</h5>
+        <p>No hidden charges.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-house"></i>
+        <h5>Door to Door</h5>
+        <p>Pickup & drop service.</p>
+      </div>
     </div>
   </div>
-  <div class="col-md-6 text-md-end footer-right mt-4 mt-md-0">
-    <p><i class="fa-solid fa-location-dot"></i> Ludhiana East</p>
-    <p><i class="fa-solid fa-phone"></i> +91 98727-40033</p>
-  </div>
-</div>
+</section>
 
-<div class="footer-bottom">
-  © 2025 <span style="color:#FFD700">Prabhu Tour & Travels</span>. All Rights Reserved.
-</div>
-</div>
+<!-- ================= MAIN CONTENT ================= -->
+<section class="container my-5">
+  <div class="row align-items-center g-5">
+
+    <div class="col-md-6">
+      <h2>Serving From <span style="color:#FFD700">Ludhiana</span></h2>
+      <p class="mt-3">
+        We provide reliable taxi services from Ludhiana to major cities across Punjab
+        with professional drivers and clean vehicles.
+      </p>
+
+      <div class="routes">
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Chandigarh<br>
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Mohali<br>
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Amritsar<br>
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Barnala<br>
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Pathankot<br>
+        Ludhiana <i class="fa-solid fa-arrow-right"></i> Khanna<br>
+        <br>
+        <strong>Vice Versa</strong>
+        <strong>And Many More Cities…</strong>
+      </div>
+
+      <div class="row g-4 mt-4">
+        <div class="col-md-6">
+          <div class="extra-card">
+            <i class="fa-solid fa-arrow-right"></i>
+            <h5>One Way Service</h5>
+            <p>Pay only one-side fare.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="extra-card">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <h5>Up & Down Service</h5>
+            <p>Same day return trips.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1200&q=80" alt="Taxi Service">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-md-6">
+        <div class="footer-brand">Prabhu Tour & Travels</div>
+        <p>Premium cab & travel services from Ludhiana.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/prabhu_tour_and_travels/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prabhujangra@gmail.com" target="_blank">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 text-md-end footer-right mt-4 mt-md-0">
+        <p><i class="fa-solid fa-location-dot"></i> Ludhiana East</p>
+        <p><i class="fa-solid fa-phone"></i> +91 98727-40033</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 <span style="color:#FFD700">Prabhu Tour & Travels</span>. All Rights Reserved.
+    </div>
+  </div>
 </footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/9872740033" class="whatsapp" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll(".navbar-nav .nav-link").forEach(link=>{
+  link.addEventListener("click",()=>{
+    const nav=document.querySelector("#mainNavbar");
+    const bs=bootstrap.Collapse.getInstance(nav);
+    if(bs){ bs.hide(); }
+  });
+});
+</script>
 
 </body>
 </html>
