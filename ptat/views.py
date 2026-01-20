@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import BookingEnquiry
 
+from django.http import HttpResponse
+from django.db import connection
 def index(request):
     return render(request, "Homepage.html")
 def about(request):
@@ -11,21 +13,21 @@ def contact(request):
 def services(request):
     return render(request, "services.html")
 
+
 def contact(request):
     if request.method == "POST":
         BookingEnquiry.objects.create(
-            name=request.POST.get('name'),
-            phone=request.POST.get('phone'),
-            pickup_location=request.POST.get('pickup_location'),
-            drop_location=request.POST.get('drop_location'),
-            car_type=request.POST.get('car_type'),
-            message=request.POST.get('message'),
+            name=request.POST.get("name"),
+            phone=request.POST.get("phone"),
+            pickup_location=request.POST.get("pickup_location"),
+            drop_location=request.POST.get("drop_location"),
+            car_type=request.POST.get("car_type"),
+            message=request.POST.get("message"),
         )
-        return redirect('contact')  # reload page after submit
+        return HttpResponse("OK")  # TEMP FOR TESTING
 
-    return render(request, 'contact.html')
-from django.http import HttpResponse
-from django.db import connection
+    return render(request, "contact.html")
+
 
 def run_migrations_once(request):
     with connection.cursor() as cursor:
