@@ -16,6 +16,8 @@ def services(request):
 
 def contact(request):
     if request.method == "POST":
+        print("✅ CONTACT FORM POST RECEIVED")
+
         BookingEnquiry.objects.create(
             name=request.POST.get("name"),
             phone=request.POST.get("phone"),
@@ -24,9 +26,12 @@ def contact(request):
             car_type=request.POST.get("car_type"),
             message=request.POST.get("message"),
         )
-        return HttpResponse("OK")  # TEMP FOR TESTING
+
+        print("✅ BOOKING SAVED")
+        return redirect("contact")
 
     return render(request, "contact.html")
+
 
 
 def run_migrations_once(request):

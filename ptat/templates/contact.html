@@ -306,7 +306,7 @@
           <div class="contact-form">
             <h4 class="mb-4">Book / Enquire Your Ride</h4>
 
-            <form method="POST" action="/contact/" onsubmit="showThankYouPopup(event)">
+            <form method="POST" action="{% url 'contact' %}" onsubmit="showThankYouPopup(event)">
 
               {% csrf_token %}
 
