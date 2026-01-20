@@ -306,7 +306,7 @@
           <div class="contact-form">
             <h4 class="mb-4">Book / Enquire Your Ride</h4>
 
-            <form method="POST" action="{% url 'contact' %}" onsubmit="showThankYouPopup(event)">
+            <form method="POST" action="{% url 'contact' %}" >
 
               {% csrf_token %}
 
@@ -511,16 +511,7 @@
         });
       });
     </script>
-<script>
-function showThankYouPopup(event){
-  event.preventDefault(); // stop page reload
-  const modal = new bootstrap.Modal(
-    document.getElementById("thankYouModal")
-  );
-  modal.show();
-  event.target.reset(); // optional: clears form
-}
-</script>
+
 
   </body>
 </html>
