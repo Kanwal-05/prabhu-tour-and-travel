@@ -24,6 +24,13 @@ def contact(request):
         return redirect('contact')  # reload page after submit
 
     return render(request, 'contact.html')
+from django.http import HttpResponse
+from django.db import connection
+
+def run_migrations_once(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT 1")
+    return HttpResponse("Database connected")
 
 
 
