@@ -25,6 +25,20 @@ def contact(request):
 
     return render(request, 'contact.html')
 
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def create_admin_once(request):
+    if User.objects.filter(username="admin").exists():
+        return HttpResponse("Admin already exists")
+
+    User.objects.create_superuser(
+        username="kanwal",
+        email="gurkanwalsingh04@gmail.com",
+        password="kanwal@5702"
+    )
+    return HttpResponse("Admin created successfully")
+
 
 
 
