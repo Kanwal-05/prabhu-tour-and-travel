@@ -39,7 +39,6 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.db import connection
 import requests
 
 
@@ -79,10 +78,5 @@ def contact(request):
 
     return render(request, "contact.html")
 
-
-def run_migrations_once(request):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT 1")
-    return HttpResponse("Database connected")
 
 
