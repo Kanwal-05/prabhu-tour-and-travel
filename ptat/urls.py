@@ -10,8 +10,7 @@ urlpatterns = [
     path('', views.index, name="home"),
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
-    path('services/', views.services, name="services"),
-    path("db-check/", views.run_migrations_once),
+    path('services/', views.services, name="services")
 
 ]
 
