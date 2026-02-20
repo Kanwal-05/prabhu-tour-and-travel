@@ -214,16 +214,24 @@
         text-align: center;
         font-size: 14px;
       }
-      @media (max-width: 991px) {
-        .navbar-collapse {
-          background: #000;
-          padding: 15px;
-        }
+     @media (max-width: 991px) {
+  .navbar-collapse {
+    background: #000;
+    padding: 20px 0;
+  }
 
-        .nav-link {
-          margin: 10px 0;
-        }
-      }
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 10px 0;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 20px;
+  }
+}
     </style>
   </head>
 
@@ -232,27 +240,19 @@
     <div id="preloader"><div class="loader"></div></div>
     <div class="cursor"></div>
 
-    <!-- NAVBAR
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Prabhu Tour & Travels</a>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'services' %}">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">Prabhu Tour & Travels</a>
+        <!-- Logo + Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="{% static 'images/logo.png' %}"
+            height="40"
+            class="me-2"
+            alt="Logo"
+          />
+          Prabhu Tour & Travels
+        </a>
 
         <!-- Mobile Toggle Button -->
         <button
@@ -269,7 +269,7 @@
 
         <!-- Collapsible Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto text-center text-lg-start">
             <li class="nav-item">
               <a class="nav-link" href="#">Home</a>
             </li>
@@ -286,7 +286,6 @@
         </div>
       </div>
     </nav>
-
     <!-- HERO -->
     <section class="hero">
       <div class="container" data-aos="fade-up">
